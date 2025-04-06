@@ -15,7 +15,7 @@ const Weather = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   // API Key - En producción debería almacenarse de forma segura
-  const API_KEY = '8c2a69b0ce97c86a6fe3ce8a4709a840';
+  const API_KEY = ``
 
   useEffect(() => {
     if (darkMode) {
