@@ -14,9 +14,6 @@ const Weather = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // API Key - En producción debería almacenarse de forma segura
-  const API_KEY = ``
-
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');
@@ -60,7 +57,7 @@ const Weather = () => {
   const fetchCitySuggestions = async (query) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${import.meta.env.VITE_KEY_API}`
       );
       
       if (!response.ok) {
@@ -84,7 +81,7 @@ const Weather = () => {
       
       // Fetch current weather
       const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=es`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${import.meta.env.VITE_KEY_API}&lang=es`
       );
       
       if (!weatherResponse.ok) {
@@ -96,7 +93,7 @@ const Weather = () => {
       
       // Fetch forecast (using 5-day forecast endpoint instead of onecall)
       const forecastResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=es`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${import.meta.env.VITE_KEY_API}&lang=es`
       );
       
       if (!forecastResponse.ok) {
