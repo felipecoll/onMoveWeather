@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Search, MapPin, Wind, Droplets, Thermometer, Umbrella } from 'lucide-react';
+import Footer from './components/Layout/Footer';
 // import './WeatherApp.css';
 
 const Weather = () => {
@@ -178,7 +179,7 @@ const Weather = () => {
       
       // Get coordinates from city name
       const geoResponse = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${import.meta.env.VITE_KEY_API}`
       );
       
       if (!geoResponse.ok) {
@@ -394,9 +395,7 @@ const Weather = () => {
         </div>
       )}
 
-      <footer>
-        <p>© 2025 On move weather | Datos proporcionados por OpenWeather</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };
